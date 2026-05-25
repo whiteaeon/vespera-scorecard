@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vespera — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ── Login gate ── -->
+<div id="login-screen">
+  <header><div class="wordmark">Vespera<span>Botanicals</span></div></header>
+  <div class="login-wrap">
+    <div class="card">
+      <h2 style="text-align:center; margin-bottom:1rem;">Dashboard</h2>
+      <div class="field">
+        <label for="dash-pw">Password</label>
+        <input type="password" id="dash-pw" placeholder="Enter password" />
+      </div>
+      <div class="btn-row" style="justify-content:center;">
+        <button class="btn btn-primary" onclick="tryLogin()">Enter</button>
+      </div>
+      <p id="pw-error" class="hint" style="color:var(--red); text-align:center; margin-top:0.5rem;"></p>
+    </div>
+  </div>
+</div>
+
+<!-- ── Dashboard ── -->
+<div id="dash-screen" class="hidden">
+  <header>
+    <div class="wordmark">Vespera<span>Botanicals — Pilot Dashboard</span></div>
+  </header>
+
+  <div class="page">
+
+    <!-- Top stats -->
+    <div class="dash-grid">
+      <div class="stat-card">
+        <div class="stat-num" id="stat-total">–</div>
+        <div class="stat-label">Testers</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-complete">–</div>
+        <div class="stat-label">Completed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-avg-quality">–</div>
+        <div class="stat-label">Avg sleep quality</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-recommend">–</div>
+        <div class="stat-label">Would recommend</div>
+      </div>
+    </div>
+
+    <!-- GO / NO-GO -->
+    <div class="card">
+      <h2>GO / NO-GO signals</h2>
+      <p class="subtitle">Avg must be ≥ 3.5 across all four for a GO. Needs ≥ 5 complete submissions.</p>
+      <div id="gonogo-rows"></div>
+      <div style="margin-top:1rem; text-align:center;">
+        <span class="go-badge" id="gonogo-badge">Pending data</span>
+      </div>
+    </div>
+
+    <!-- Taste scores -->
+    <div class="card">
+      <h2>Taste &amp; presentation</h2>
+      <p class="subtitle">First-impressions averages (1–5)</p>
+      <div class="chart-wrap">
+        <canvas id="taste-chart" height="180"></canvas>
+      </div>
+    </div>
+
+    <!-- Nightly sleep quality -->
+    <div class="card">
+      <h2>Sleep quality by night</h2>
+      <p class="subtitle">Average across all testers per night (1–5)</p>
+      <div class="chart-wrap">
+        <canvas id="sleep-chart" height="180"></canvas>
+      </div>
+    </div>
+
+    <!-- Price sensitivity -->
+    <div class="card">
+      <h2>Price sensitivity — $46</h2>
+      <div id="price-bars"></div>
+      <div id="alt-prices" style="margin-top:0.75rem;"></div>
+    </div>
+
+    <!-- Tester status -->
+    <div class="card">
+      <h2>Tester status</h2>
+      <div id="tester-list"></div>
+    </div>
+
+    <!-- Open responses -->
+    <div class="card">
+      <h2>What they'd change</h2>
+      <ul class="responses-list" id="change-list"></ul>
+    </div>
+
+    <div class="card">
+      <h2>Best thing about it</h2>
+      <ul class="responses-list" id="best-list"></ul>
+    </div>
+
+    <div class="card">
+      <h2>Other notes</h2>
+      <ul class="responses-list" id="other-list"></ul>
+    </div>
+
+    <div style="text-align:center; margin-top:1.5rem;">
+      <button class="btn btn-secondary" onclick="loadData()">Refresh data</button>
+      &nbsp;
+      <button class="btn btn-secondary" onclick="exportCSV()">Export CSV</button>
+    </div>
+
+  </div>
+</div>
+
+<script src="dashboard.js"></script>
+</body>
+</html>

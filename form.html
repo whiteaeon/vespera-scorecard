@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vespera — Your Scorecard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <div class="wordmark">Vespera<span>Botanicals</span></div>
+</header>
+
+<div class="page">
+
+  <!-- Progress -->
+  <div class="progress-wrap" id="progress-bar">
+    <div class="progress-step active" id="ps-1"></div>
+    <div class="progress-step" id="ps-2"></div>
+    <div class="progress-step" id="ps-3"></div>
+    <div class="progress-step" id="ps-4"></div>
+  </div>
+
+  <!-- ── STEP 1: Setup ── -->
+  <div id="step-1">
+    <div class="card">
+      <h2>Your setup</h2>
+      <p class="subtitle">Step 1 of 4 — takes 1 minute</p>
+
+      <div class="field">
+        <label>Bottle number (on the label)</label>
+        <input type="text" id="bottle-num" placeholder="e.g. 03" />
+      </div>
+
+      <div class="field">
+        <label>Dose you used most often</label>
+        <div class="radio-group">
+          <label><input type="radio" name="dose" value="1 dropper" /> 1 dropper</label>
+          <label><input type="radio" name="dose" value="2 droppers" /> 2 droppers</label>
+          <label><input type="radio" name="dose" value="varied" /> Varied</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>How many minutes before bed did you take it?</label>
+        <input type="number" id="timing-min" placeholder="e.g. 30" min="1" max="120" />
+      </div>
+
+      <div class="field">
+        <label>How did you take it?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="how-taken" value="straight" /> Straight</label>
+          <label><input type="radio" name="how-taken" value="in water" /> In water</label>
+          <label><input type="radio" name="how-taken" value="in tea" /> In tea</label>
+          <label><input type="radio" name="how-taken" value="mixed" /> Mixed</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>How many nights did you use it?</label>
+        <input type="number" id="nights-used" placeholder="e.g. 7" min="1" max="14" />
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="goTo(2)">Next →</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 2: First impressions ── -->
+  <div id="step-2" class="hidden">
+    <div class="card">
+      <h2>First impressions</h2>
+      <p class="subtitle">Step 2 of 4 — how it looked, smelled, and tasted on night 1</p>
+
+      <table class="rating-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>1<br/><span style="font-weight:400;color:#aaa">poor</span></th>
+            <th>2</th><th>3</th><th>4</th>
+            <th>5<br/><span style="font-weight:400;color:#aaa">great</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Look (color, clarity, label appeal)</td>
+            <td><input type="radio" name="r-look" value="1"/></td>
+            <td><input type="radio" name="r-look" value="2"/></td>
+            <td><input type="radio" name="r-look" value="3"/></td>
+            <td><input type="radio" name="r-look" value="4"/></td>
+            <td><input type="radio" name="r-look" value="5"/></td>
+          </tr>
+          <tr>
+            <td>Smell</td>
+            <td><input type="radio" name="r-smell" value="1"/></td>
+            <td><input type="radio" name="r-smell" value="2"/></td>
+            <td><input type="radio" name="r-smell" value="3"/></td>
+            <td><input type="radio" name="r-smell" value="4"/></td>
+            <td><input type="radio" name="r-smell" value="5"/></td>
+          </tr>
+          <tr>
+            <td>Taste — straight</td>
+            <td><input type="radio" name="r-taste-straight" value="1"/></td>
+            <td><input type="radio" name="r-taste-straight" value="2"/></td>
+            <td><input type="radio" name="r-taste-straight" value="3"/></td>
+            <td><input type="radio" name="r-taste-straight" value="4"/></td>
+            <td><input type="radio" name="r-taste-straight" value="5"/></td>
+          </tr>
+          <tr>
+            <td>Taste — in water or tea</td>
+            <td><input type="radio" name="r-taste-diluted" value="1"/></td>
+            <td><input type="radio" name="r-taste-diluted" value="2"/></td>
+            <td><input type="radio" name="r-taste-diluted" value="3"/></td>
+            <td><input type="radio" name="r-taste-diluted" value="4"/></td>
+            <td><input type="radio" name="r-taste-diluted" value="5"/></td>
+          </tr>
+          <tr>
+            <td>Mouthfeel / aftertaste</td>
+            <td><input type="radio" name="r-mouthfeel" value="1"/></td>
+            <td><input type="radio" name="r-mouthfeel" value="2"/></td>
+            <td><input type="radio" name="r-mouthfeel" value="3"/></td>
+            <td><input type="radio" name="r-mouthfeel" value="4"/></td>
+            <td><input type="radio" name="r-mouthfeel" value="5"/></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="divider" />
+
+      <div class="field">
+        <label>Sweetness</label>
+        <div class="radio-group">
+          <label><input type="radio" name="sweetness" value="too sweet" /> Too sweet</label>
+          <label><input type="radio" name="sweetness" value="just right" /> Just right</label>
+          <label><input type="radio" name="sweetness" value="not sweet enough" /> Not sweet enough</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Would the taste alone make you reorder?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="taste-reorder" value="yes" /> Yes</label>
+          <label><input type="radio" name="taste-reorder" value="maybe" /> Maybe</label>
+          <label><input type="radio" name="taste-reorder" value="no" /> No</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="goTo(1)">← Back</button>
+      <button class="btn btn-primary" onclick="goTo(3)">Next →</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 3: Nightly log ── -->
+  <div id="step-3" class="hidden">
+    <div class="card">
+      <h2>Nightly log</h2>
+      <p class="subtitle">Step 3 of 4 — fill in each night as you go, or all at the end</p>
+
+      <div style="overflow-x:auto;">
+        <table class="night-table" id="night-table">
+          <thead>
+            <tr>
+              <th>Night</th>
+              <th>Date</th>
+              <th>Dose</th>
+              <th>Min to fall asleep</th>
+              <th>Times woke up</th>
+              <th>Sleep quality (1–5)</th>
+              <th>Morning grogginess (1–5)</th>
+            </tr>
+          </thead>
+          <tbody id="night-body">
+            <!-- rows injected by JS -->
+          </tbody>
+        </table>
+      </div>
+      <p class="hint" style="margin-top:0.75rem;">Sleep quality: 1 = terrible, 5 = great. Grogginess: 1 = none, 5 = heavy.</p>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="goTo(2)">← Back</button>
+      <button class="btn btn-primary" onclick="goTo(4)">Next →</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 4: Final ratings + money questions ── -->
+  <div id="step-4" class="hidden">
+    <div class="card">
+      <h2>Did it work?</h2>
+      <p class="subtitle">Step 4 of 4 — after 5+ nights</p>
+
+      <table class="rating-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>1<br/><span style="font-weight:400;color:#aaa">not at all</span></th>
+            <th>2</th><th>3</th><th>4</th>
+            <th>5<br/><span style="font-weight:400;color:#aaa">a lot</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Helped me wind down / feel calm</td>
+            <td><input type="radio" name="r-calm" value="1"/></td>
+            <td><input type="radio" name="r-calm" value="2"/></td>
+            <td><input type="radio" name="r-calm" value="3"/></td>
+            <td><input type="radio" name="r-calm" value="4"/></td>
+            <td><input type="radio" name="r-calm" value="5"/></td>
+          </tr>
+          <tr>
+            <td>Helped me fall asleep faster</td>
+            <td><input type="radio" name="r-sleep-onset" value="1"/></td>
+            <td><input type="radio" name="r-sleep-onset" value="2"/></td>
+            <td><input type="radio" name="r-sleep-onset" value="3"/></td>
+            <td><input type="radio" name="r-sleep-onset" value="4"/></td>
+            <td><input type="radio" name="r-sleep-onset" value="5"/></td>
+          </tr>
+          <tr>
+            <td>Helped me stay asleep</td>
+            <td><input type="radio" name="r-stay-asleep" value="1"/></td>
+            <td><input type="radio" name="r-stay-asleep" value="2"/></td>
+            <td><input type="radio" name="r-stay-asleep" value="3"/></td>
+            <td><input type="radio" name="r-stay-asleep" value="4"/></td>
+            <td><input type="radio" name="r-stay-asleep" value="5"/></td>
+          </tr>
+          <tr>
+            <td>Felt better than what I've tried before</td>
+            <td><input type="radio" name="r-vs-others" value="1"/></td>
+            <td><input type="radio" name="r-vs-others" value="2"/></td>
+            <td><input type="radio" name="r-vs-others" value="3"/></td>
+            <td><input type="radio" name="r-vs-others" value="4"/></td>
+            <td><input type="radio" name="r-vs-others" value="5"/></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="divider" />
+
+      <div class="field">
+        <label>About how long until you felt anything? (minutes)</label>
+        <input type="number" id="onset-min" placeholder="e.g. 20" min="0" max="180" />
+        <div class="radio-group" style="margin-top:0.5rem;">
+          <label><input type="radio" name="onset-felt" value="felt nothing" /> Felt nothing</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Any side effects? (check all that apply)</label>
+        <div class="check-group">
+          <label><input type="checkbox" name="side-effects" value="grogginess" /> Grogginess</label>
+          <label><input type="checkbox" name="side-effects" value="vivid dreams" /> Vivid dreams</label>
+          <label><input type="checkbox" name="side-effects" value="headache" /> Headache</label>
+          <label><input type="checkbox" name="side-effects" value="stomach upset" /> Stomach upset</label>
+          <label><input type="checkbox" name="side-effects" value="none" /> None</label>
+        </div>
+      </div>
+
+      <hr class="divider" />
+      <h2 style="margin-bottom:0.25rem;">The money questions</h2>
+      <p class="subtitle" style="margin-bottom:1rem;">Be honest — this is how I know if it's ready.</p>
+
+      <div class="field">
+        <label>Would you use this again?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="use-again" value="yes" /> Yes</label>
+          <label><input type="radio" name="use-again" value="maybe" /> Maybe</label>
+          <label><input type="radio" name="use-again" value="no" /> No</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Would you pay $46 a bottle?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="pay-46" value="yes" /> Yes</label>
+          <label><input type="radio" name="pay-46" value="maybe" /> Maybe</label>
+          <label><input type="radio" name="pay-46" value="no" /> No</label>
+        </div>
+        <div class="field" style="margin-top:0.75rem;">
+          <label>If no — what price feels right?</label>
+          <input type="number" id="alt-price" placeholder="e.g. 34" min="1" max="200" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Would you subscribe (auto-refill monthly, ~10% off)?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="subscribe" value="yes" /> Yes</label>
+          <label><input type="radio" name="subscribe" value="maybe" /> Maybe</label>
+          <label><input type="radio" name="subscribe" value="no" /> No</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Would you recommend it to a friend?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="recommend" value="yes" /> Yes</label>
+          <label><input type="radio" name="recommend" value="maybe" /> Maybe</label>
+          <label><input type="radio" name="recommend" value="no" /> No</label>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <div class="field">
+        <label>One thing you'd change</label>
+        <textarea id="change-one" placeholder="Be specific — taste, smell, bottle, directions, dose…"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Best thing about it</label>
+        <textarea id="best-thing" placeholder="What actually worked or surprised you?"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Anything else? (packaging, name, vibe, directions)</label>
+        <textarea id="anything-else"></textarea>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="goTo(3)">← Back</button>
+      <button class="btn btn-gold" onclick="submitForm()" id="submit-btn">Submit scorecard</button>
+    </div>
+    <p id="submit-error" class="hint" style="color:var(--red); text-align:right; margin-top:0.5rem;"></p>
+  </div>
+
+  <!-- ── Confirmation ── -->
+  <div id="step-done" class="hidden confirm-wrap">
+    <div class="icon">✦</div>
+    <h2>Thank you.</h2>
+    <p>Your scorecard has been submitted. Honest feedback like yours is exactly what makes this worth building.</p>
+  </div>
+
+</div><!-- /page -->
+
+<script src="submit.js"></script>
+<script src="form.js"></script>
+</body>
+</html>

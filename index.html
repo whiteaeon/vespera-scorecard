@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vespera — Pilot Tester</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <div class="wordmark">Vespera<span>Botanicals</span></div>
+</header>
+
+<div class="page">
+  <div class="hero">
+    <h1>Pilot Tester Scorecard</h1>
+    <p>Thank you for testing Vespera Sleep Tincture. Use it for at least 5 nights, then fill this in honestly — a real 2 is worth more than a polite 5.</p>
+
+    <div class="start-form card" style="text-align:left; margin-top: 1.5rem;">
+      <div class="field">
+        <label for="tester-name">Your first name</label>
+        <input type="text" id="tester-name" placeholder="e.g. Sarah" autocomplete="given-name" />
+      </div>
+      <div class="field">
+        <label for="age-range">Age range</label>
+        <select id="age-range">
+          <option value="">Select…</option>
+          <option>18–24</option>
+          <option>25–34</option>
+          <option>35–44</option>
+          <option>45–54</option>
+          <option>55–64</option>
+          <option>65+</option>
+        </select>
+      </div>
+      <div class="btn-row" style="justify-content: center; margin-top: 1rem;">
+        <button class="btn btn-primary" onclick="startForm()">Start my scorecard →</button>
+      </div>
+      <p id="start-error" class="hint" style="color: var(--red); text-align:center; margin-top:0.5rem;"></p>
+    </div>
+
+    <p class="hint" style="margin-top: 1.5rem;">Already started? <a href="form.html" style="color: var(--aubergine);">Continue where I left off →</a></p>
+  </div>
+</div>
+
+<script>
+function startForm() {
+  const name = document.getElementById('tester-name').value.trim();
+  const age = document.getElementById('age-range').value;
+  const err = document.getElementById('start-error');
+
+  if (!name) { err.textContent = 'Please enter your name.'; return; }
+  if (!age)  { err.textContent = 'Please select an age range.'; return; }
+
+  const key = name.toLowerCase().replace(/\s+/g, '-') + '-' + Date.now().toString(36);
+  localStorage.setItem('vespera_session', JSON.stringify({
+    key, name, ageRange: age, startedAt: new Date().toISOString()
+  }));
+  window.location.href = 'form.html';
+}
+</script>
+</body>
+</html>
