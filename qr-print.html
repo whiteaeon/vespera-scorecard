@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vespera — Tester QR Code</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --aubergine: #3B2742;
+      --gold: #C2A15C;
+      --sage: #8FA68A;
+      --bone: #F4EFE6;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: Inter, system-ui, sans-serif;
+    }
+
+    .card {
+      background: var(--bone);
+      border: 2px solid var(--aubergine);
+      border-radius: 16px;
+      padding: 2.5rem 2.75rem 2.25rem;
+      text-align: center;
+      width: 380px;
+    }
+
+    .wordmark {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2rem;
+      letter-spacing: 0.25em;
+      color: var(--aubergine);
+      text-transform: uppercase;
+    }
+
+    .descriptor {
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-top: 0.1rem;
+      font-weight: 600;
+    }
+
+    .rule {
+      border: none;
+      border-top: 1px solid var(--gold);
+      margin: 1.25rem auto;
+      width: 60%;
+    }
+
+    .headline {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.05rem;
+      color: var(--aubergine);
+      margin-bottom: 0.3rem;
+      font-style: italic;
+    }
+
+    .sub {
+      font-size: 0.72rem;
+      color: #777;
+      letter-spacing: 0.03em;
+      margin-bottom: 1.25rem;
+    }
+
+    .qr-wrap {
+      background: #fff;
+      border-radius: 10px;
+      display: inline-block;
+      padding: 12px;
+      border: 1px solid #ddd;
+    }
+
+    .qr-wrap img {
+      display: block;
+      width: 200px;
+      height: 200px;
+      image-rendering: pixelated;
+    }
+
+    .rule2 {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 1.25rem auto;
+      width: 80%;
+    }
+
+    .url {
+      font-size: 0.65rem;
+      color: #999;
+      letter-spacing: 0.02em;
+      word-break: break-all;
+    }
+
+    .tagline {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 0.85rem;
+      color: var(--sage);
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    @media print {
+      body { background: #fff; min-height: unset; }
+      .card { border-color: #3B2742; page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="wordmark">Vespera</div>
+    <div class="descriptor">Botanicals</div>
+
+    <hr class="rule" />
+
+    <p class="headline">You're part of the pilot.</p>
+    <p class="sub">Scan to open your tester scorecard</p>
+
+    <div class="qr-wrap">
+      <img src="data:image/png;base64,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" alt="QR code — Vespera tester scorecard" />
+    </div>
+
+    <hr class="rule2" />
+
+    <p class="url">whiteaeon.github.io/vespera-scorecard</p>
+    <p class="tagline">Rest is a ritual.</p>
+  </div>
+</body>
+</html>
