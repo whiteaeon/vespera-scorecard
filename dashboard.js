@@ -28,6 +28,7 @@ document.getElementById('dash-pw').addEventListener('keydown', e => {
 if (sessionStorage.getItem('vespera_dash') === '1') {
   document.getElementById('login-screen').classList.add('hidden');
   document.getElementById('dash-screen').classList.remove('hidden');
+  loadData();
 }
 
 // ── Data loading ──────────────────────────────────────────
@@ -47,6 +48,8 @@ async function loadData() {
     render(allRows);
   } catch (e) {
     console.error('Failed to load data:', e);
+    const wrap = document.getElementById('tester-list');
+    if (wrap) wrap.innerHTML = `<p style="color:var(--red)">Failed to load data: ${e.message}. Check the Apps Script URL.</p>`;
   }
 }
 
