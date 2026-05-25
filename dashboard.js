@@ -6,7 +6,7 @@ const DASHBOARD_PASSWORD = 'vespera2026';
 // Same Apps Script URL used in submit.js — append ?action=read to fetch data
 const APPS_SCRIPT_URL = (typeof window !== 'undefined' && window.APPS_SCRIPT_URL)
   ? window.APPS_SCRIPT_URL
-  : 'YOUR_APPS_SCRIPT_URL_HERE';
+  : 'https://script.google.com/macros/s/AKfycbzgpNL0LzUtLSX3YlHdSG8avqeeZSEI54LDinJ7g7Wpfu0c4RVjgMLSqhwHn2Xma3Hn9w/exec';
 
 // ── Login ─────────────────────────────────────────────────
 function tryLogin() {

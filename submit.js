@@ -1,6 +1,6 @@
 // Replace this URL after deploying your Google Apps Script web app.
 // Instructions in README.md → "Step 2: Deploy the Apps Script"
-const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzgpNL0LzUtLSX3YlHdSG8avqeeZSEI54LDinJ7g7Wpfu0c4RVjgMLSqhwHn2Xma3Hn9w/exec';
 
 async function postToSheet(payload) {
   if (APPS_SCRIPT_URL === 'YOUR_APPS_SCRIPT_URL_HERE') {
