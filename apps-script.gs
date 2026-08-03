@@ -14,13 +14,13 @@ const COLUMNS = [
   'useAgain','pay46','altPrice','subscribe','recommend',
   'changeOne','bestThing','anythingElse',
   // nights 1–7 flattened
-  'n1date','n1latency','n1wakeups','n1quality','n1grogginess',
-  'n2date','n2latency','n2wakeups','n2quality','n2grogginess',
-  'n3date','n3latency','n3wakeups','n3quality','n3grogginess',
-  'n4date','n4latency','n4wakeups','n4quality','n4grogginess',
-  'n5date','n5latency','n5wakeups','n5quality','n5grogginess',
-  'n6date','n6latency','n6wakeups','n6quality','n6grogginess',
-  'n7date','n7latency','n7wakeups','n7quality','n7grogginess',
+  'n1date','n1dose','n1latency','n1wakeups','n1quality','n1grogginess',
+  'n2date','n2dose','n2latency','n2wakeups','n2quality','n2grogginess',
+  'n3date','n3dose','n3latency','n3wakeups','n3quality','n3grogginess',
+  'n4date','n4dose','n4latency','n4wakeups','n4quality','n4grogginess',
+  'n5date','n5dose','n5latency','n5wakeups','n5quality','n5grogginess',
+  'n6date','n6dose','n6latency','n6wakeups','n6quality','n6grogginess',
+  'n7date','n7dose','n7latency','n7wakeups','n7quality','n7grogginess',
 ];
 
 function getOrCreateSheet() {
@@ -41,7 +41,7 @@ function doPost(e) {
     const nights = data.nights || [];
 
     const row = COLUMNS.map(col => {
-      const m = col.match(/^n(\d)(date|latency|wakeups|quality|grogginess)$/);
+      const m = col.match(/^n(\d)(date|dose|latency|wakeups|quality|grogginess)$/);
       if (m) {
         const night = nights[parseInt(m[1]) - 1] || {};
         return night[m[2]] ?? '';
@@ -94,6 +94,7 @@ function doGet(e) {
     for (let n = 1; n <= 7; n++) {
       obj.nights.push({
         date:      obj[`n${n}date`]      || '',
+        dose:      obj[`n${n}dose`]      || '',
         latency:   obj[`n${n}latency`]   || '',
         wakeups:   obj[`n${n}wakeups`]   || '',
         quality:   obj[`n${n}quality`]   || '',
